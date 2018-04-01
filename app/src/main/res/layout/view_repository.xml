@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="repository"
+            type="kostritsyn.igor.githubtest.core.entity.Repository"/>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/avatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            app:avatar="@{repository.owner.avatar}"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{repository.title}"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="18sp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/avatar"
+            android:layout_toRightOf="@id/avatar"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{repository.description}"
+            android:textSize="12sp"
+            android:layout_alignStart="@id/title"
+            android:layout_alignLeft="@id/title"
+            android:layout_alignEnd="@id/title"
+            android:layout_alignRight="@id/title"
+            android:layout_below="@id/title"/>
+
+    </RelativeLayout>
+</layout>

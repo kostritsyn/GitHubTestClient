@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="kostritsyn.igor.githubtest.ui.auth.AuthActivity"/>
+        <variable name="authStage" type="int"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/auth_error_desc"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/text_auth_failed"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/auth_webview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/auth_webview"
+            app:layout_constraintVertical_bias="0.3"
+            app:visibleGone="@{authStage == AuthActivity.STAGE_FAILED}"/>
+
+        <Button
+            android:id="@+id/auth_try_again_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/action_try_again"
+            app:layout_constraintEnd_toEndOf="@+id/auth_webview"
+            app:layout_constraintStart_toStartOf="@+id/auth_webview"
+            app:layout_constraintTop_toBottomOf="@+id/auth_error_desc"
+            app:visibleGone="@{authStage == AuthActivity.STAGE_FAILED}"/>
+
+        <ProgressBar
+            android:id="@+id/auth_progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleGone="@{authStage == AuthActivity.STAGE_ACCESS_TOKEN}"/>
+
+        <WebView
+            android:id="@+id/auth_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:visibleGone="@{authStage == AuthActivity.STAGE_AUTH}"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>
